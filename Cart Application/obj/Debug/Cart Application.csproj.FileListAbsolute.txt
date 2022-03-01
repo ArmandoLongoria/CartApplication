@@ -1,0 +1,7 @@
+C:\Users\Space Face\source\repos\Cart Application\Cart Application\bin\Debug\Cart Application.exe.config
+C:\Users\Space Face\source\repos\Cart Application\Cart Application\bin\Debug\Cart Application.exe
+C:\Users\Space Face\source\repos\Cart Application\Cart Application\bin\Debug\Cart Application.pdb
+C:\Users\Space Face\source\repos\Cart Application\Cart Application\obj\Debug\Cart Application.csprojAssemblyReference.cache
+C:\Users\Space Face\source\repos\Cart Application\Cart Application\obj\Debug\Cart Application.csproj.CoreCompileInputs.cache
+C:\Users\Space Face\source\repos\Cart Application\Cart Application\obj\Debug\Cart Application.exe
+C:\Users\Space Face\source\repos\Cart Application\Cart Application\obj\Debug\Cart Application.pdb
