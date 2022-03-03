@@ -21,7 +21,7 @@ namespace Cart_Application
         Item[] storeInventory = new Item[10];
         Item[] cartInventory = new Item[10];
 
-        static void Main(string[] args)
+        /*static void Main(string[] args)
         {
             Console.WriteLine("=========================================== WHAT'RE YA BUYIN' SUPERMART ================================================");
             Console.WriteLine("========================================== Copyright ARMAND LONGORIA 2022 ==============================================");
@@ -47,7 +47,7 @@ namespace Cart_Application
             myProgram.AddToStoreInventory(shirt);
             myProgram.AddToStoreInventory(shoes);
             myProgram.MainMenu();
-        }
+        }*/
 
         public void MainMenu()
         {
