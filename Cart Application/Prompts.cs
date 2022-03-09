@@ -31,14 +31,14 @@ namespace Cart_Application
             return inputChoice;
         }
 
-        public static int SearchPrompt(int type)
+        public static string SearchPrompt(int type)
         {
-            int inputChoice = 0;
+            string inputChoice = "";
             string typePrompt = (type == 1) ? "Item Type" : "Serial Number";
-            while(inputChoice < 1 || inputChoice > 3)
+            while(inputChoice == "")
             {
                 Console.WriteLine("\nEnter the " + typePrompt + " you would like to search.\n");
-                inputChoice = CustomerInput.GetInt();
+                inputChoice = CustomerInput.GetString();
             }
             return inputChoice;
         }
