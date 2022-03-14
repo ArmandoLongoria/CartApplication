@@ -10,9 +10,13 @@ namespace Cart_Application
     {
         public int storeInventorySize = 0;
         public int cartInventorySize = 0;
-        Item[] storeInventory = new Item[10];
+        public Item[] storeInventory = new Item[10];
         Item[] cartInventory = new Item[10];
         
+        public Cart_Functionality()
+        {
+            InitializeInventory();
+        }
 
         private void InitializeInventory()
         {
@@ -182,46 +186,41 @@ namespace Cart_Application
             cartInventory = tempItems;
         }
 
-        public void BuyMenu()
+        public void BuyItem()
         {
-            Console.WriteLine("\nWhat would you like to buy? (Enter item Serial Number as it appears in item display)");
-            itemToBuy = Console.ReadLine();
-            foreach (Item i in storeInventory)
+            string itemToBuy = Prompts.BuyPrompt();
+            for(int i = 0; i < storeInventorySize; i++)
             {
-                if (itemToBuy == i.itemSerialNumber)
+                if(itemToBuy == storeInventory[i].itemSerialNumber)
                 {
-                    Console.WriteLine("Item found. How many would you like to buy?");
-                    purchaseQuantityString = Console.ReadLine();
-                    if (int.TryParse(purchaseQuantityString, out purchaseQuantity))
-                    {
-                        if (i.itemStockQuantity >= purchaseQuantity)
-                        {
-                            i.itemStockQuantity = i.itemStockQuantity - purchaseQuantity;
-                            i.itemCartQuantity = i.itemCartQuantity + purchaseQuantity;
-                            i.UpdateQuantity();
-                            if (i.itemCartQuantity == purchaseQuantity)
-                            {
-                                AddToCart(i);
-                            }
-                            if (i.itemStockQuantity == 0)
-                            {
-                                RemoveFromInventory(i.itemSerialNumber);
-                            }
-                            Console.WriteLine("Thank you for your purchase(s)!\nReturning to Main Menu.");
-                            MainMenu();
-                            return;
-                        }
-                        Console.WriteLine("Not enough in stock!\nReturning to Buy Menu.");
-                        BuyMenu();
-                    }
-                    Console.WriteLine("Not a valid format.\nReturning to Buy Menu.");
-                    BuyMenu();
+                    BuyAmount(storeInventory[i]);
+                    return;
                 }
             }
             Console.WriteLine("Could not find product with Serial Number: " + itemToBuy);
-            Console.WriteLine("Returning to Buy Menu.\n");
-            BuyMenu();
-            return;
+        }
+
+        public void BuyAmount(Item i)
+        {
+            int moveQuantity = Prompts.MoveQuantity("Buy");
+            if (i.itemStockQuantity >= moveQuantity)
+            {
+
+                i.itemStockQuantity = Functionality.Subtraction(i.itemStockQuantity, moveQuantity);
+                i.itemCartQuantity = Functionality.Addition(i.itemCartQuantity, moveQuantity);
+                i.UpdateQuantity();
+                if (i.itemCartQuantity == moveQuantity)
+                {
+                    AddToCart(i);
+                }
+                if (i.itemStockQuantity == 0)
+                {
+                   RemoveFromInventory(i.itemSerialNumber);
+                }
+                Console.WriteLine("Thank you for your purchase(s)!\nReturning to Main Menu.");
+                return;
+            }
+            Console.WriteLine("Not enough in stock!\nReturning to Buy Menu.");                 
         }
     }
 }

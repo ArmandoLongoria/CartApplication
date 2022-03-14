@@ -34,11 +34,5 @@ namespace Cart_Application
             return a < b;
         }
         
-        public static void Main(string[] args)
-        {
-            bool test = IsEqual(45, 45);
-            Console.WriteLine("Answer is: " + test);
-            Console.ReadKey();
-        }
     }
 }

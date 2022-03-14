@@ -11,15 +11,19 @@ namespace Cart_Application
         public string command;
         public string itemToBuy;
 
-        /*static void Main(string[] args)
+        static void Main(string[] args)
         {
             Console.WriteLine("=========================================== WHAT'RE YA BUYIN' SUPERMART ================================================");
             Console.WriteLine("========================================== Copyright ARMAND LONGORIA 2022 ==============================================");
-            Program myProgram = new Program();
-            myProgram.MainMenu();
-        }*/
+            Cart_Functionality myFunctionality = new Cart_Functionality();
+            for(int i = 0; i < 10; i++)
+            {
+                Console.WriteLine(myFunctionality.storeInventory[i].displayInfo("store"));
+            }
+            Console.ReadKey();
+        }
 
-        public void MainMenu()
+        /*public void MainMenu()
         {
             Console.WriteLine("==================================================== MAIN MENU =========================================================");
             Console.WriteLine("\nWhat would you like to do?\n1. Check Store Inventory\n2. Search Inventory\n3. Check Cart\n4. Buy\n5. Remove item from cart\n6. Exit\n");
@@ -74,6 +78,6 @@ namespace Cart_Application
         {
             Console.WriteLine("Press Enter to Exit program.");
             Console.Read();
-        }
+        }*/
     }
 }
