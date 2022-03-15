@@ -8,76 +8,37 @@ namespace Cart_Application
 {
     class Program
     {
-        public string command;
-        public string itemToBuy;
-
         static void Main(string[] args)
         {
             Console.WriteLine("=========================================== WHAT'RE YA BUYIN' SUPERMART ================================================");
             Console.WriteLine("========================================== Copyright ARMAND LONGORIA 2022 ==============================================");
             Cart_Functionality myFunctionality = new Cart_Functionality();
-            for(int i = 0; i < 10; i++)
-            {
-                Console.WriteLine(myFunctionality.storeInventory[i].displayInfo("store"));
-            }
-            Console.ReadKey();
+            Program myProgram = new Program();
+            myProgram.MenuActions(myFunctionality);
         }
 
-        /*public void MainMenu()
+        public void MenuActions(Cart_Functionality functionality)
         {
-            Console.WriteLine("==================================================== MAIN MENU =========================================================");
-            Console.WriteLine("\nWhat would you like to do?\n1. Check Store Inventory\n2. Search Inventory\n3. Check Cart\n4. Buy\n5. Remove item from cart\n6. Exit\n");
-            command = Console.ReadLine();
-            CheckInput();
-        }
-
-        public void CheckInput()
-        {
-            if (command == "1" || command == "2" || command == "3" || command == "4" || command == "5" || command == "6")
+            int action = 0;
+            while(action < 6)
             {
-                CheckCommand();
-            }
-            else
-            {
-                Console.WriteLine("\nINVALID INPUT (Use corresponding numbers to enter a command");
-                MainMenu();
-            }
-        }
-
-        public void CheckCommand()
-        {
-            if (command == "1")
-            {
-                DisplayStoreInventory();
-                MainMenu();
-            }
-            else if (command == "2")
-            {
-                SearchStoreInventory();
-            }
-            else if (command == "3")
-            {
-                DisplayCartInventory();
-                MainMenu();
-            }
-            else if (command == "4")
-            {
-                BuyMenu();
-            }
-            else if (command == "5")
-            {
-                RemoveQuantityFromCart();
-            }
-            else if (command == "6")
-            {
-                Exit();
-            }
+                action = Prompts.MainMenu();
+                switch (action)
+                {
+                    case 1: functionality.DisplayStoreInventory(); break;
+                    case 2: functionality.SearchStoreInventory(); break;
+                    case 3: functionality.DisplayCartInventory(); break;
+                    case 4: functionality.BuyItem(); break;
+                    case 5: functionality.RemoveQuantityFromCart(); break;
+                    case 6: Exit(); break;
+                }
+            } 
         }
 
         public void Exit()
         {
             Console.WriteLine("Press Enter to Exit program.");
             Console.Read();
-        }*/
+        }
     }
 }

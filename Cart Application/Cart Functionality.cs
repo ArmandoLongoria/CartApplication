@@ -8,7 +8,7 @@ namespace Cart_Application
 {
     class Cart_Functionality
     {
-        public int storeInventorySize = 0;
+        public int storeInventorySize;
         public int cartInventorySize = 0;
         public Item[] storeInventory = new Item[10];
         Item[] cartInventory = new Item[10];
@@ -16,6 +16,7 @@ namespace Cart_Application
         public Cart_Functionality()
         {
             InitializeInventory();
+            storeInventorySize = storeInventory.Length;
         }
 
         private void InitializeInventory()
@@ -96,26 +97,36 @@ namespace Cart_Application
 
         private void SearchByType(string searchString)
         {
+            int s = 0;
             for (int i = 0; i < storeInventorySize; i++)
             {
                 if (storeInventory[i].itemType.Equals(searchString, StringComparison.OrdinalIgnoreCase))
                 {
                     Console.WriteLine(storeInventory[i].displayInfo("stock"));
+                    s++;
                 }
             }
-            Console.WriteLine("\nNot a valid Item Type\nReturning to Search Menu.\n");
+            if(s == 0)
+            {
+                Console.WriteLine("\nNot a valid Item Type\nReturning to Search Menu.\n");
+            }          
         }
 
         private void SearchBySerialNumber(string searchString)
         {
+            int s = 0;
             for (int i = 0; i < storeInventorySize; i++)
             {
                 if (storeInventory[i].itemSerialNumber.Equals(searchString, StringComparison.OrdinalIgnoreCase))
                 {
                     Console.WriteLine(storeInventory[i].displayInfo("stock"));
+                    s++;
                 }
             }
-            Console.WriteLine("\nNo match found for: " + searchString + "\nReturning to Search Menu.\n");
+            if (s == 0)
+            {
+                Console.WriteLine("\nNo match found for: " + searchString + "\nReturning to Search Menu.\n");
+            }           
         }
 
         public void RemoveQuantityFromCart()
